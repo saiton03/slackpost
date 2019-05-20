@@ -1,1 +1,1 @@
-worker: python3 run.py
+eqbot: python3 run.py
