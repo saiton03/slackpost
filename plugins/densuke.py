@@ -37,7 +37,6 @@ def attend(url):
       continue
     time=dt.strptime(timeoriginal, '%m/%d %H:%M')
     times.append(time)
-
   numofpeople=len(names)
   timessort=sorted(times,reverse=True)
   reply+='回答者数:'+str(numofpeople)+'人，最終更新日時:'+str(timessort[0].strftime("%m/%d %H:%M"))+'\n'
@@ -54,10 +53,11 @@ def attend(url):
   #回答取得
   answers=soup.find_all("div",class_=re.compile("col"))
   anses=[]
+  sel=['○','△','×','-']
   for answer in answers:
     ans=answer.string.strip()
-    anses.append(ans)
-
+    if ans in sel:
+      anses.append(ans)
   numofevents=len(mtgs)
   participants=[]
   for i in range(numofevents):
